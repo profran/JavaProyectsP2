@@ -115,6 +115,11 @@ public class Rect {
 
     public double calculateAreaOfcollision(Rect rect) {
 
+        double x_overlap = Math.max(0, Math.min(this.x_y_4.getX(), rect.x_y_4.getX()) - Math.max(this.x_y_1.getX(), rect.x_y_1.getX()));
+        double y_overlap = Math.max(0, Math.min(this.x_y_4.getY(), rect.x_y_4.getY()) - Math.max(this.x_y_1.getY(), rect.x_y_1.getY()));
+        return x_overlap * y_overlap;
+
+        /* Esto no sirve y fue la primera versino del codigo
         if (rect.x_y_3.getY() > this.x_y_1.getY() && rect.x_y_3.getX() >= this.x_y_1.getX()
                 && rect.x_y_4.getX() <= this.x_y_2.getX()) {
 
@@ -136,7 +141,7 @@ public class Rect {
 
             return i_r.calculateArea();
 
-        } else if (rect.x_y_2.getX() > this.x_y_3.getX() && rect.x_y_3.getY() <= this.x_y_3.getY ()
+        } else if (rect.x_y_2.getX() > this.x_y_3.getX() && rect.x_y_3.getY() <= this.x_y_3.getY()
                 && rect.x_y_2.getY() >= this.x_y_2.getY()) {
 
             Rect i_r = new Rect(new Punto(this.x_y_3.getX(), rect.x_y_3.getX()), rect.x_y_2);
@@ -147,6 +152,6 @@ public class Rect {
 
         return 0;
 
+    }*/
     }
-
 }
