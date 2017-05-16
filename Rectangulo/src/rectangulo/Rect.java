@@ -24,7 +24,7 @@ public class Rect {
         this.dotList[1] = this.x_y_2;
         this.dotList[2] = this.x_y_3;
         this.dotList[3] = this.x_y_4;
-                          
+
     }
 
     public Punto getX_y_1() {
@@ -114,34 +114,39 @@ public class Rect {
     }
 
     public double calculateAreaOfcollision(Rect rect) {
-        
-        
-        
-        if (rect.x_y_3.getY() > this.x_y_1.getY() && rect.x_y_3.getX() >= this.x_y_1.getX() 
+
+        if (rect.x_y_3.getY() > this.x_y_1.getY() && rect.x_y_3.getX() >= this.x_y_1.getX()
                 && rect.x_y_4.getX() <= this.x_y_2.getX()) {
-            
+
             Rect i_r = new Rect(rect.x_y_3, new Punto(rect.x_y_4.getX(), this.x_y_2.getY()));
-            
+
             return i_r.calculateArea();
-  
-        }else if (rect.x_y_3.getX() < this.x_y_2.getX() && rect.x_y_2.getY() >= this.x_y_2.getY() 
-                && rect.x_y_3.getY() <= this.x_y_3.getY()){
-        
+
+        } else if (rect.x_y_3.getX() < this.x_y_2.getX() && rect.x_y_2.getY() >= this.x_y_2.getY()
+                && rect.x_y_3.getY() <= this.x_y_3.getY()) {
+
             Rect i_r = new Rect(rect.x_y_3, new Punto(this.x_y_2.getX(), rect.x_y_2.getY()));
-            
+
             return i_r.calculateArea();
-        // Solo anda hasta aca, de aca para bajo es testeo     
-        }else if (rect.x_y_2.getY() < this.x_y_3.getY() && rect.x_y_3.getX() >= this.x_y_3.getY() 
-                && rect.x_y_3.getY() <= this.x_y_3.getY()){
-        
-            Rect i_r = new Rect(rect.x_y_3, new Punto(this.x_y_2.getX(), rect.x_y_2.getY()));
-            
+            // Solo anda hasta aca, de aca para bajo es testeo     
+        } else if (rect.x_y_2.getY() < this.x_y_3.getY() && rect.x_y_3.getX() >= this.x_y_3.getX()
+                && rect.x_y_2.getX() <= this.x_y_2.getX()) {
+
+            Rect i_r = new Rect(new Punto(rect.x_y_3.getX(), this.x_y_3.getY()), rect.x_y_2);
+
             return i_r.calculateArea();
-            
+
+        } else if (rect.x_y_2.getX() > this.x_y_3.getX() && rect.x_y_3.getY() <= this.x_y_3.getY ()
+                && rect.x_y_2.getY() >= this.x_y_2.getY()) {
+
+            Rect i_r = new Rect(new Punto(this.x_y_3.getX(), rect.x_y_3.getX()), rect.x_y_2);
+
+            return i_r.calculateArea();
+
         }
 
         return 0;
-        
+
     }
 
 }
